@@ -116,6 +116,31 @@ def generate_PDF(df):
     y = pdf.get_y()
     pdf.image("stock_line_chart.png", x=x, y=y, w=190)
 
+    # part4: Data Preprocessing (Data Manipulation)
+    pdf.add_page()
+    pdf.set_font("Arial", "B", 14)
+    title_part4 = "4. Data Preprocessing (Data Manipulation)"
+    pdf.cell(200, 10, txt=title_part4, ln=1, align="L")
+    pdf.set_font("Arial", "", 10)
+    content_part4 = (
+        "Create 2 new columns: Daily percentage change -- 'Pct_Change' \n"
+        "and 5-day rolling average for volume -- '5-day Volume Avg'. \n"
+        "New Statistics: "
+    )
+    pdf.multi_cell(0, 10, txt=content_part4)
+    x = pdf.get_x()
+    y = pdf.get_y()
+    pdf.image("imgs/010.png", x=x, y=y, h=60)
+    pdf.ln(70)
+    content_part4 = "New Visualization: "
+    pdf.multi_cell(0, 10, txt=content_part4)
+    x = pdf.get_x()
+    y = pdf.get_y()
+    pdf.image("pct.png", x=x, y=y, w=150)
+    y = pdf.get_y() + 80
+    x = pdf.get_x()
+    pdf.image("5_day_volume_avg.png", x=x, y=y, w=150)
+
     # save PDF
     pdf.output("report.pdf")
 
